@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&family=Rowdies:wght@300;400&display=swap');
+
+/* custom font */
+@font-face {
+    font-family: "digiFont";
+    src: url("./asset/digiFont.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg1: rgb(165, 0, 66);
+    --fg1: rgb(130, 0, 52);
+    --fg1Text: rgb(255, 158, 158);
+    --shadow: rgb(90, 0, 36);
+
+
+    --bg2: rgb(49, 0, 123);
+
+}
+
+body {
+    background-image: url("./asset/img2.png");
+    background-size: cover;
+    height: 100vh;
+    font-family: 'Mukta', sans-serif;
+
+}
+
+/* class to make div center */
+.center {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+/* div custom style => border, bgcolor,color */
+.borderStyle {
+    border: 1px solid var(--fg1Text);
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--fg1);
+    color: var(--fg1Text);
+}
+
+#title {
+    color: white;
+    letter-spacing: 2px;
+
+    font-family: 'Rowdies', cursive;
+    font-weight: 300;
+    font-size: 20px;
+    
+
+    box-sizing: border-box;
+    padding-top: 6px;
+    height: 40px;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+
+    /* set positon from top, center is handled by "center" class */
+    top: 100px;
+
+    background-color: var(--bg1);
+    /* x offset y | offset blur | itensity shadow | dimension*/
+    box-shadow: 0px 0px 10px 2px var(--shadow);
+
+}
+
+.container {
+
+    box-sizing: border-box;
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+
+    /* set positon from top, center is handled by "center" class */
+    top: 150px;
+    
+    background-color: var(--bg1);
+    box-shadow: 0px 5px 10px 2px var(--shadow);
+
+}
+
+#theme {
+      
+    width: 100px;
+    font-size: 10px;
+    font-weight: 500;
+    
+    /* set positon from top, center is handled by "center" class */
+    top: 10px;
+
+}
+
+#Curr-time {
+    font-family: digiFont;
+    color: white;
+    font-size: 65px;
+
+    /* set positon from top, center is handled by "center" class */
+    top: 36px;
+
+    opacity:0.9;
+
+}
+
+#theme:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.alarm-time-container {
+    top: 110px;
+}
+
+.alarm-time-container input{
+    width: 75px;
+    margin: 3px;
+    height: 25px;
+    text-align: center;
+}
+
+.buttonHov:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+::placeholder { 
+    color: var(--fg1Text);
+    opacity: 0.75;
+}
+
+#setAlarm {
+    height: 25px;
+    width:250px;
+    top: 150px;
+    font-weight: 500;
+}
+
+
+#stopAlarm {
+    height: 25px;
+    width:250px;
+    top: 185px;
+    font-weight: 500;
+}

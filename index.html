@@ -5,10 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alarm Clock</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- heading -->
+    <div class="center" id="title">24 Hour Alarm Clock</div>
+
+    <!-- Main container of current time, set alarm ---start here------------------->
+    <div class="container center">
+        <!-- switch theme -->
+        <div class="center borderStyle" id="theme">Switch Mode</div>
+        <!-- current time -->
+        <div class="center" id="Curr-time"></div>
+        <!-- alarm time container-->
+        <div class="alarm-time-container center">
+            <input class="borderStyle buttonHov" type="number" name="alarm_hr" id="alarm_hr" max="23" min="00" placeholder="HH">
+            <input class="borderStyle buttonHov" type="number" name="alarm_min" id="alarm_min" max="59" min="00" placeholder="MM">
+            <input class="borderStyle buttonHov" type="number" name="alarm_sec" id="alarm_sec" max="59" min="00" placeholder="SS">
+        </div>
+        <!-- set alarm button -->
+        <div class="center borderStyle buttonHov" id="setAlarm">Set Alarm</div>
+        <div class=" center borderStyle buttonHov" id="stopAlarm">Stop Alarm</div>
+
+    </div>
+    <!-- Main container of current time, set alarm ---end here------------------->
+
     
-    
+    <script src="script.js" ></script>
 </body>
 </html>
