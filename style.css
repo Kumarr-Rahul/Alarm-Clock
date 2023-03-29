@@ -12,13 +12,14 @@
 }
 
 :root {
-    --bg1: rgb(165, 0, 66);
-    --fg1: rgb(130, 0, 52);
-    --fg1Text: rgb(255, 158, 158);
+    /* --bg1: rgb(165, 0, 66); */
+    --fg1: #98003f;
+    --fg1Text: #fbf9de;
     --shadow: rgb(90, 0, 36);
 
-
-    --bg2: rgb(49, 0, 123);
+    --fg2: #22346c ;
+    --fg2Text: #dfdefb;
+    --shadow2: #14193d ;
 
 }
 
@@ -27,6 +28,7 @@ body {
     background-size: cover;
     height: 100vh;
     font-family: 'Mukta', sans-serif;
+    transition: 1s;
 
 }
 
@@ -49,7 +51,7 @@ body {
 }
 
 #title {
-    color: white;
+    color: var(--fg1Text);
     letter-spacing: 2px;
 
     font-family: 'Rowdies', cursive;
@@ -77,15 +79,13 @@ body {
 
     box-sizing: border-box;
     padding: 10px;
-    height: 300px;
+    height: 235px;
     width: 300px;
     text-align: center;
     border-radius: 5px;
 
     /* set positon from top, center is handled by "center" class */
     top: 150px;
-    
-    background-color: var(--bg1);
     box-shadow: 0px 5px 10px 2px var(--shadow);
 
 }
@@ -97,19 +97,17 @@ body {
     font-weight: 500;
     
     /* set positon from top, center is handled by "center" class */
-    top: 10px;
+    top: 15px;
 
 }
 
 #Curr-time {
     font-family: digiFont;
-    color: white;
+    color: var(--fg1Text);
     font-size: 65px;
 
     /* set positon from top, center is handled by "center" class */
-    top: 36px;
-
-    opacity:0.9;
+    top: 41px;
 
 }
 
@@ -119,7 +117,7 @@ body {
 }
 
 .alarm-time-container {
-    top: 110px;
+    top: 115px;
 }
 
 .alarm-time-container input{
@@ -136,20 +134,20 @@ body {
 
 ::placeholder { 
     color: var(--fg1Text);
-    opacity: 0.75;
+    opacity: 0.8;
 }
 
 #setAlarm {
     height: 25px;
     width:250px;
-    top: 150px;
-    font-weight: 500;
+    top: 155px;
+    font-weight: 400;
 }
 
 
 #stopAlarm {
     height: 25px;
     width:250px;
-    top: 185px;
-    font-weight: 500;
+    top: 190px;
+    font-weight: 400;
 }
