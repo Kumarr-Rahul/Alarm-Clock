@@ -5,6 +5,7 @@ let setAlarm = document.querySelector('#setAlarm');
 let stopAlarm = document.querySelector('#stopAlarm');
 let allAlarmContainer = document.querySelector('#allAlarmContainer');
 let templates = document.querySelector("#templates");
+let alarmTimeContainer = document.querySelector('.alarm-time-container');
 
 /* for changing color on mode swith--------- */
 let root = document.querySelector(':root');
@@ -58,7 +59,6 @@ function appendTime() {
     const finalTime = `${hr}:${min}:${sec}`;
 
     CurrentTime.innerText = finalTime;
-    // console.log(finalTime);
 
 }
 
@@ -80,16 +80,36 @@ function setAlarmHTML() {
     
     let alarmContainerTemplate = templates.content.querySelector('.alarmContainer');
     let alarmContainer = document.importNode(alarmContainerTemplate,true);
-
     
-
     allAlarmContainer.appendChild(alarmContainer);
+    
+    /* show alarm time inside alarm list */
+    let alarmTime = alarmContainer.querySelector('.alarmTime');
+    
+    (function() {
 
-
-
+        let hourSelector = alarmTimeContainer.querySelector('#alarm_hr');
+        let hour = timeStyle(hourSelector.value);
+        if(hour === '0'){
+            hour = '00'
+        }
+    
+        let minSelector = alarmTimeContainer.querySelector('#alarm_min');
+        let min = timeStyle(minSelector.value);
+        if(min === '0'){
+            min = '00'
+        }
+    
+        let secSelector = alarmTimeContainer.querySelector('#alarm_sec');
+        let sec = timeStyle(secSelector.value);
+        if(sec === '0'){
+            sec = '00'
+        }
+    
+        // console.log("hour:",hour);
+        alarmTime.innerText = `${hour}:${min}:${sec}`;
+    
+    })();
 }
 
-/* show alarm time inside alarm list */
-function alarmTime() {
 
-}
