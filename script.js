@@ -1,8 +1,12 @@
 let body = document.getElementsByTagName('body');
 const CurrentTime = document.getElementById('Curr-time');
 let mode = document.getElementById('theme');
+let setAlarm = document.querySelector('#setAlarm');
+let stopAlarm = document.querySelector('#stopAlarm');
+let allAlarmContainer = document.querySelector('#allAlarmContainer');
+let templates = document.querySelector("#templates");
 
-/* for changing color on mode swith */
+/* for changing color on mode swith--------- */
 let root = document.querySelector(':root');
 let rootStyle = getComputedStyle(root);
 
@@ -64,4 +68,28 @@ function timeStyle(time) {
         return '0' + time;
     }
     return time;
+}
+
+
+/* for seting alarm -------------- */
+setAlarm.addEventListener('click', setAlarmHTML);
+
+/* add html to DOM */
+
+function setAlarmHTML() {
+    
+    let alarmContainerTemplate = templates.content.querySelector('.alarmContainer');
+    let alarmContainer = document.importNode(alarmContainerTemplate,true);
+
+    
+
+    allAlarmContainer.appendChild(alarmContainer);
+
+
+
+}
+
+/* show alarm time inside alarm list */
+function alarmTime() {
+
 }

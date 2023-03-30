@@ -16,6 +16,7 @@
     --fg1: #98003f;
     --fg1Text: #fbf9de;
     --shadow: rgb(90, 0, 36);
+    --alarmlist:  #cb3250;
 
     --fg2: #22346c ;
     --fg2Text: #dfdefb;
@@ -29,6 +30,7 @@ body {
     height: 100vh;
     font-family: 'Mukta', sans-serif;
     transition: 1s;
+    background-attachment: fixed;
 
 }
 
@@ -50,6 +52,7 @@ body {
     color: var(--fg1Text);
 }
 
+/* title or heading of alarm page */
 #title {
     color: var(--fg1Text);
     letter-spacing: 2px;
@@ -75,6 +78,7 @@ body {
 
 }
 
+/* main container for current time and alarm set buttons---------- */
 .container {
 
     box-sizing: border-box;
@@ -90,6 +94,7 @@ body {
 
 }
 
+/* switch mode button ------------------ */
 #theme {
       
     width: 100px;
@@ -101,6 +106,7 @@ body {
 
 }
 
+/* current time ----------- */
 #Curr-time {
     font-family: digiFont;
     color: var(--fg1Text);
@@ -111,11 +117,13 @@ body {
 
 }
 
+/* switch mode button hover effect ------------- */
 #theme:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
 
+/* container for alarm time---------- */
 .alarm-time-container {
     top: 115px;
 }
@@ -132,11 +140,13 @@ body {
     transform: scale(1.05);
 }
 
+/* placeholder for alarm time */
 ::placeholder { 
     color: var(--fg1Text);
     opacity: 0.8;
 }
 
+/* set alarm button------------------- */
 #setAlarm {
     height: 25px;
     width:250px;
@@ -144,10 +154,59 @@ body {
     font-weight: 400;
 }
 
-
+/* stop alarm button --------------- */
 #stopAlarm {
     height: 25px;
     width:250px;
     top: 190px;
     font-weight: 400;
+}
+
+
+/* container for alarm list */
+#allAlarmContainer {
+    margin-top: 395px;
+}
+/* single alarm container---------- */
+.alarmContainer {
+
+    height: 30px;
+    width: 300px;
+    margin-top: 10px;
+    border-radius: 5px;
+
+    box-shadow: 0px 5px 10px 2px var(--shadow);
+    background-color: var(--alarmlist);
+    border: 1px solid var(--fg1Text);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    color: var(--fg1Text);
+
+
+}
+
+/* alarm time display--------- */
+.alarmContainer .alarmTime{
+    width: 40%;
+    height: 70%;
+}
+.alarmContainer .delete{
+    width: 30%;
+    height: 70%;
+    background-color: var(--fg1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alarmContainer .delete p{
+    font-size: 15px;
 }
