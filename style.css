@@ -221,7 +221,7 @@ body {
 
 /* alarm list heading  */
 #alarmList {
-    color: black;
+    color: var(--fg1Text);
     letter-spacing: 2px;
 
     font-family: 'Rowdies', cursive;
