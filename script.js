@@ -92,25 +92,62 @@ function setAlarmHTML() {
     /* add alarm to the DOM---------- */
     (function () {
 
-        /* fetching hour, min and sec value from alarm-time-container */
+        /* fetching hour, min and sec value from alarm-time-container -----------*/
+
+        /* hour selector */
         let hourSelector = alarmTimeContainer.querySelector('#alarm_hr');
         let hour = timeStyle(hourSelector.value);
+
+        /* minute selector */
+        let minSelector = alarmTimeContainer.querySelector('#alarm_min');
+        let min = timeStyle(minSelector.value);
+
+        /* second selector */
+        let secSelector = alarmTimeContainer.querySelector('#alarm_sec');
+        let sec = timeStyle(secSelector.value);
+
+
+        /* invalid minute time check */
+        if(hour > 23  || hour < 0) {
+            alert("Invalid time");
+            hourSelector.value = "";
+            minSelector.value = "";
+            secSelector.value = "";
+            return;
+        }
+
         if (hour === '0') {
             hour = '00'
         }
 
-        let minSelector = alarmTimeContainer.querySelector('#alarm_min');
-        let min = timeStyle(minSelector.value);
+        
+        /* invalid minute time check */
+        if(min > 59  || min < 0) {
+            alert("Invalid time");
+            hourSelector.value = "";
+            minSelector.value = "";
+            secSelector.value = "";
+            return;
+        }
+
         if (min === '0') {
             min = '00'
         }
+        
+        /* invalid second time check */
+        if(sec > 59  || sec < 0) {
+            alert("Invalid time");
+            hourSelector.value = "";
+            minSelector.value = "";
+            secSelector.value = "";
+            return;
+        }
 
-        let secSelector = alarmTimeContainer.querySelector('#alarm_sec');
-        let sec = timeStyle(secSelector.value);
         if (sec === '0') {
             sec = '00'
         }
 
+        /* take time in hh:mm:ss format */
         let fetchedTime = `${hour}:${min}:${sec}`;
 
         /* check for alarm already exist */
@@ -161,9 +198,10 @@ function deleteHelper() {
 
 /* ring alarm ----------------- */
 let music = document.querySelector('#music');
-
+let isPlaying = false;
 function ring() {
     music.play();
+    isPlaying = true;
     alert(`Wake Up. Time is ${presentTime}`);
 }
 
@@ -178,10 +216,13 @@ let ringInterval = setInterval(() => {
 stopAlarm.addEventListener('click', () => {
 
     music.pause();
-    if (alarmList.length > 0) {
+    if (alarmList.length > 0 && status) {
         alert("alarm stopped");
-    } else {
-        alert("no alarm set")
+        isPlaying = false;
+    }
+
+    if(alarmList.length <= 0) {
+        alert("No alarm is set")
     }
 
 })
