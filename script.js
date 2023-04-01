@@ -133,7 +133,7 @@ function setAlarmHTML() {
         if (min === '0') {
             min = '00'
         }
-        
+
         /* invalid second time check */
         if(sec > 59  || sec < 0) {
             alert("Invalid time");
@@ -202,7 +202,7 @@ let isPlaying = false;
 function ring() {
     music.play();
     isPlaying = true;
-    alert(`Wake Up. Time is ${presentTime}`);
+    // alert(`Wake Up. Time is ${presentTime}`);
 }
 
 let ringInterval = setInterval(() => {
@@ -226,16 +226,3 @@ stopAlarm.addEventListener('click', () => {
     }
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
