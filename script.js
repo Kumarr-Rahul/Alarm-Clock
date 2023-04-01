@@ -15,7 +15,7 @@ let toggleStatus = false;
 
 let alarmList = [];
 
-mode.addEventListener('click', function() {
+mode.addEventListener('click', function () {
 
     /* getting css variable value of red theme */
     var fg1 = rootStyle.getPropertyValue('--fg1');
@@ -26,23 +26,23 @@ mode.addEventListener('click', function() {
     var fg2 = rootStyle.getPropertyValue('--fg2');
     var fg2Text = rootStyle.getPropertyValue('--fg2Text');
     var shadow2 = rootStyle.getPropertyValue('--shadow2');
-    
-    if(!toggleStatus) {
+
+    if (!toggleStatus) {
         document.body.style.backgroundImage = "url('./asset/img1.png')";
 
-        root.style.setProperty('--fg1',fg2);
-        root.style.setProperty('--fg1Text',fg2Text);
-        root.style.setProperty('--shadow',shadow2);
-    }else {
+        root.style.setProperty('--fg1', fg2);
+        root.style.setProperty('--fg1Text', fg2Text);
+        root.style.setProperty('--shadow', shadow2);
+    } else {
         document.body.style.backgroundImage = "url('./asset/img2.png')";
-    
-        root.style.setProperty('--fg1','#98003f');
-        root.style.setProperty('--fg1Text','#fbf9de');
-        root.style.setProperty('--shadow','rgb(90, 0, 36)');
+
+        root.style.setProperty('--fg1', '#98003f');
+        root.style.setProperty('--fg1Text', '#fbf9de');
+        root.style.setProperty('--shadow', 'rgb(90, 0, 36)');
     }
 
     toggleStatus = !toggleStatus;
-    
+
 })
 
 /* for changing color on mode swith---ends here------ */
@@ -70,7 +70,7 @@ function appendTime() {
 
 // change style or format of time, for ex 2:7:7 to 02:07:07
 function timeStyle(time) {
-    if ( time < 10 && time.length != 2) {
+    if (time < 10 && time.length != 2) {
         return '0' + time;
     }
     return time;
@@ -82,42 +82,42 @@ setAlarm.addEventListener('click', setAlarmHTML);
 /* add alarm html to DOM */
 
 function setAlarmHTML() {
-    
+
     let alarmContainerTemplate = templates.content.querySelector('.alarmContainer');
-    let alarmContainer = document.importNode(alarmContainerTemplate,true);
-    
+    let alarmContainer = document.importNode(alarmContainerTemplate, true);
+
     /* show alarm time inside alarm list */
     let alarmTime = alarmContainer.querySelector('.alarmTime');
-    
+
     /* add alarm to the DOM---------- */
-    (function() {
+    (function () {
 
         /* fetching hour, min and sec value from alarm-time-container */
         let hourSelector = alarmTimeContainer.querySelector('#alarm_hr');
         let hour = timeStyle(hourSelector.value);
-        if(hour === '0'){
+        if (hour === '0') {
             hour = '00'
         }
-    
+
         let minSelector = alarmTimeContainer.querySelector('#alarm_min');
         let min = timeStyle(minSelector.value);
-        if(min === '0'){
+        if (min === '0') {
             min = '00'
         }
-    
+
         let secSelector = alarmTimeContainer.querySelector('#alarm_sec');
         let sec = timeStyle(secSelector.value);
-        if(sec === '0'){
+        if (sec === '0') {
             sec = '00'
         }
 
         let fetchedTime = `${hour}:${min}:${sec}`;
 
         /* check for alarm already exist */
-        if(alarmList.includes(fetchedTime)) {
+        if (alarmList.includes(fetchedTime)) {
             alert("Alarm already exist. Please set a new alarm");
             return;
-        }else {
+        } else {
             /* pushing alarm time to alaramList array */
             alarmList.push(fetchedTime);
 
@@ -146,14 +146,14 @@ function deleteHelper() {
     let deleteDiv = this;
     let toBeDeleted = deleteDiv.parentNode;
 
-    
-    /* Rremove alarm from alarmList array------------*/ 
+
+    /* Rremove alarm from alarmList array------------*/
     /* fetching alarmTime div */
     let alarmTimeDiv = toBeDeleted.querySelector('.alarmTime');
     let alarmTime = alarmTimeDiv.innerText;
 
     /* removing from array */
-    alarmList.splice(alarmTime,1);
+    alarmList.splice(alarmTime, 1);
 
     allAlarmContainer.removeChild(toBeDeleted);
 
@@ -168,22 +168,22 @@ function ring() {
 }
 
 let ringInterval = setInterval(() => {
-    if(alarmList.includes(presentTime)) {
+    if (alarmList.includes(presentTime)) {
         ring();
     }
 }, 1000);
 
 
-/* stop alaram ---------*/ 
+/* stop alaram ---------*/
 stopAlarm.addEventListener('click', () => {
 
     music.pause();
-    if(alarmList.length > 0) {
+    if (alarmList.length > 0) {
         alert("alarm stopped");
-    }else {
+    } else {
         alert("no alarm set")
     }
-    
+
 })
 
 

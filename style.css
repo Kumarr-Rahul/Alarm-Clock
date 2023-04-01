@@ -16,11 +16,11 @@
     --fg1: #98003f;
     --fg1Text: #fbf9de;
     --shadow: rgb(90, 0, 36);
-    --alarmlist:  #cb3250;
+    --alarmlist: #cb3250;
 
-    --fg2: #22346c ;
+    --fg2: #22346c;
     --fg2Text: #dfdefb;
-    --shadow2: #14193d ;
+    --shadow2: #14193d;
 
 }
 
@@ -67,7 +67,7 @@ body {
     font-family: 'Rowdies', cursive;
     font-weight: 300;
     font-size: 20px;
-    
+
 
     box-sizing: border-box;
     padding-top: 6px;
@@ -103,11 +103,11 @@ body {
 
 /* switch mode button ------------------ */
 #theme {
-      
+
     width: 100px;
     font-size: 10px;
     font-weight: 500;
-    
+
     /* set positon from top, center is handled by "center" class */
     top: 15px;
 
@@ -135,7 +135,7 @@ body {
     top: 115px;
 }
 
-.alarm-time-container input{
+.alarm-time-container input {
     width: 75px;
     margin: 3px;
     height: 25px;
@@ -144,7 +144,7 @@ body {
 
 
 /* placeholder for alarm time */
-::placeholder { 
+::placeholder {
     color: var(--fg1Text);
     opacity: 0.8;
 }
@@ -152,7 +152,7 @@ body {
 /* set alarm button------------------- */
 #setAlarm {
     height: 25px;
-    width:250px;
+    width: 250px;
     top: 155px;
     font-weight: 400;
 }
@@ -160,7 +160,7 @@ body {
 /* stop alarm button --------------- */
 #stopAlarm {
     height: 25px;
-    width:250px;
+    width: 250px;
     top: 190px;
     font-weight: 400;
 }
@@ -170,6 +170,7 @@ body {
 #allAlarmContainer {
     margin-top: 450px;
 }
+
 /* single alarm container---------- */
 .alarmContainer {
     box-sizing: border-box;
@@ -198,11 +199,12 @@ body {
 }
 
 /* alarm time display--------- */
-.alarmContainer .alarmTime{
+.alarmContainer .alarmTime {
     font-size: 20px;
     font-weight: 500;
 }
-.alarmContainer .delete{
+
+.alarmContainer .delete {
     width: 20%;
     background-color: var(--fg1);
     border-radius: 5px;
@@ -212,12 +214,12 @@ body {
     margin-top: 2px;
 }
 
-.alarmContainer .delete p{
+.alarmContainer .delete p {
     font-size: 12px;
 }
 
 
-/* alarm list heading  */ 
+/* alarm list heading  */
 #alarmList {
     color: black;
     letter-spacing: 2px;
@@ -225,7 +227,7 @@ body {
     font-family: 'Rowdies', cursive;
     font-weight: 300;
     font-size: 20px;
-    
+
 
     box-sizing: border-box;
     padding-top: 6px;
