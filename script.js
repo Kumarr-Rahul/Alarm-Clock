@@ -106,6 +106,14 @@ function setAlarmHTML() {
         let secSelector = alarmTimeContainer.querySelector('#alarm_sec');
         let sec = timeStyle(secSelector.value);
 
+        if(sec == 0 && min == 0 && hour == sec) {
+            alert("Time cannot be zero");
+            hourSelector.value = "";
+            minSelector.value = "";
+            secSelector.value = "";
+            return;
+        }
+
 
         /* invalid minute time check */
         if(hour > 23  || hour < 0) {
