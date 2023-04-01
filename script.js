@@ -7,11 +7,13 @@ let allAlarmContainer = document.querySelector('#allAlarmContainer');
 let templates = document.querySelector("#templates");
 let alarmTimeContainer = document.querySelector('.alarm-time-container');
 
-/* for changing color on mode swith--------- */
+/* for changing color on mode swith----start here----- */
 let root = document.querySelector(':root');
 let rootStyle = getComputedStyle(root);
 
 let toggleStatus = false;
+
+let alarmList = [];
 
 mode.addEventListener('click', function() {
 
@@ -43,11 +45,15 @@ mode.addEventListener('click', function() {
     
 })
 
+/* for changing color on mode swith---ends here------ */
+
 
 /* every 1sec function will get call */
 setInterval(appendTime, 1000);
 
 /* current time display function*/
+
+let presentTime;
 function appendTime() {
 
     let time = new Date();
@@ -56,9 +62,9 @@ function appendTime() {
     const min = timeStyle(time.getMinutes());
     const sec = timeStyle(time.getSeconds());
 
-    const finalTime = `${hr}:${min}:${sec}`;
+    presentTime = `${hr}:${min}:${sec}`;
 
-    CurrentTime.innerText = finalTime;
+    CurrentTime.innerText = presentTime;
 
 }
 
@@ -70,24 +76,23 @@ function timeStyle(time) {
     return time;
 }
 
-
 /* for seting alarm -------------- */
 setAlarm.addEventListener('click', setAlarmHTML);
 
-/* add html to DOM */
+/* add alarm html to DOM */
 
 function setAlarmHTML() {
     
     let alarmContainerTemplate = templates.content.querySelector('.alarmContainer');
     let alarmContainer = document.importNode(alarmContainerTemplate,true);
     
-    allAlarmContainer.appendChild(alarmContainer);
-    
     /* show alarm time inside alarm list */
     let alarmTime = alarmContainer.querySelector('.alarmTime');
     
+    /* add alarm to the DOM---------- */
     (function() {
 
+        /* fetching hour, min and sec value from alarm-time-container */
         let hourSelector = alarmTimeContainer.querySelector('#alarm_hr');
         let hour = timeStyle(hourSelector.value);
         if(hour === '0'){
@@ -105,11 +110,78 @@ function setAlarmHTML() {
         if(sec === '0'){
             sec = '00'
         }
-    
-        // console.log("hour:",hour);
-        alarmTime.innerText = `${hour}:${min}:${sec}`;
-    
+
+        let fetchedTime = `${hour}:${min}:${sec}`;
+
+        /* check for alarm already exist */
+        if(alarmList.includes(fetchedTime)) {
+            alert("Alarm already exist. Please set a new alarm");
+            return;
+        }else {
+            /* pushing alarm time to alaramList array */
+            alarmList.push(fetchedTime);
+
+            /* adding alarm to DOM */
+            allAlarmContainer.appendChild(alarmContainer);
+
+            /* setting alarm time to alarmContainer */
+            alarmTime.innerText = fetchedTime;
+
+            /* set time enables to show alert message after alarm added to div */
+            // setTimeout(function(){ alert("Alarm set successfully") }, 20);
+        }
+
     })();
+
+    /* delete alarm event listener */
+    let deleteAlarm = alarmContainer.querySelector('.delete');
+    deleteAlarm.addEventListener('click', deleteHelper);
+
 }
+
+/* delete alarm function */
+function deleteHelper() {
+    let deleteDiv = this;
+    let toBeDeleted = deleteDiv.parentNode;
+
+    
+    /* Rremove alarm from alarmList array------------*/ 
+    /* fetching alarmTime div */
+    let alarmTimeDiv = toBeDeleted.querySelector('.alarmTime');
+    let alarmTime = alarmTimeDiv.innerText;
+
+    /* removing from array */
+    alarmList.splice(alarmTime,1);
+
+    allAlarmContainer.removeChild(toBeDeleted);
+
+}
+
+/* ring alarm ----------------- */
+let music = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
+
+
+function ring() {
+    music.play();
+    alert(`Wake Up. Time is ${presentTime}`);
+}
+
+let ringInterval = setInterval(() => {
+    if(alarmList.includes(presentTime)) {
+        ring();
+    }
+}, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
