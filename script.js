@@ -127,8 +127,10 @@ function setAlarmHTML() {
             /* setting alarm time to alarmContainer */
             alarmTime.innerText = fetchedTime;
 
-            /* set time enables to show alert message after alarm added to div */
-            // setTimeout(function(){ alert("Alarm set successfully") }, 20);
+            hourSelector.value = "";
+            minSelector.value = "";
+            secSelector.value = "";
+
         }
 
     })();
@@ -158,8 +160,7 @@ function deleteHelper() {
 }
 
 /* ring alarm ----------------- */
-let music = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
-
+let music = document.querySelector('#music');
 
 function ring() {
     music.play();
@@ -172,6 +173,18 @@ let ringInterval = setInterval(() => {
     }
 }, 1000);
 
+
+/* stop alaram ---------*/ 
+stopAlarm.addEventListener('click', () => {
+
+    music.pause();
+    if(alarmList.length > 0) {
+        alert("alarm stopped");
+    }else {
+        alert("no alarm set")
+    }
+    
+})
 
 
 
